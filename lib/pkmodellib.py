@@ -19,7 +19,6 @@ import matplotlib.pyplot as plt
 # local library specific imports:
 
 
-
 def getProfiles(rail_path='', wheel_path=''):
     """Returns rail and wheel profiles from given paths with Z-axis upwards.
 
@@ -52,7 +51,7 @@ def getProfiles(rail_path='', wheel_path=''):
     return rail, wheel
 # End function getProfiles.
 
-
+# 绘制两个轮廓曲线，可用于显示车轮和轨道的轮廓
 def plotProfiles(profile1, profile2=[], contact_point=[]):
     """Plot profile(s).
 
@@ -65,8 +64,8 @@ def plotProfiles(profile1, profile2=[], contact_point=[]):
     """
     fig = plt.figure()
     ax = fig.add_subplot(111)
-    plt.xlabel('$y$, [mm]')
-    plt.ylabel('$z$, [mm]')
+    plt.xlabel('Y [mm]')
+    plt.ylabel('Z [mm]')
 
     ax.plot(profile1[:,0], profile1[:,1], 'b-')
 
@@ -190,7 +189,7 @@ def nonzeroRuns(a):
     return ranges
 # End of function nonzeroRuns.
 
-
+# 计算每个接触区域的最大压力
 def maxPressure(wheel, g_array, radius, E, nu, delta, delta0):
     """Compute maximum pressures for all contact patches.
 
@@ -224,7 +223,7 @@ def maxPressure(wheel, g_array, radius, E, nu, delta, delta0):
 
     # Function to compute x coordinate of the front edge of the
     # interpenetration region using in situ rolling radius:
-    x_front_edge = lambda ind: np.sqrt(2. * radius * g_array[ind])
+    x_front_edge = lambda ind: np.sqrt(2. * radius * g_array[ind]) # 计算了接触区域的前沿（即椭圆的半长轴）
 
     # 1st integrand:
     f1 = lambda x,y,ind: np.sqrt(x_front_edge(ind) ** 2 - x * x) / \

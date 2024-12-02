@@ -16,6 +16,16 @@ import numpy as np
 # local library specific imports:
 
 
+"""
+circularArcPoints - 用于计算圆弧的坐标
+主要参数:
+radius: 圆的半径
+n_points: 构成弧的点数(默认100个点)
+distance: 弧的半跨度
+orientation_down: 弧的方向(默认向下)
+offset_y: Y坐标的偏移量
+"""
+
 def circularArcPoints(radius, n_points=100, distance=None,
                       orientation_down=True, offset_y=0):
     """Compute coordinates of the circular arc.
@@ -70,6 +80,13 @@ def circularArcPoints(radius, n_points=100, distance=None,
 
 # End of circularArcPoints function.
 
+"""
+ellipticArcPoints - 用于计算椭圆弧的坐标
+主要参数:
+x_axis: X轴半轴长度
+y_axis: Y轴半轴长度
+其他参数与circularArcPoints类似
+"""
 
 def ellipticArcPoints(x_axis, y_axis, n_points=100, distance=None,
                       orientation_down=True, offset_y=0):
@@ -131,6 +148,12 @@ def ellipticArcPoints(x_axis, y_axis, n_points=100, distance=None,
     return np.array(coords)
 # End of ellipticArcPoints function.
 
+"""
+rotateGeometry - 用于旋转几何体
+参数:
+geometry: 要旋转的几何体坐标
+angle: 旋转角度(以度为单位)
+"""
 
 def rotateGeometry(geometry, angle):
     """Rotate geometry by the specified angle.
